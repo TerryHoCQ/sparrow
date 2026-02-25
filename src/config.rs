@@ -20,10 +20,10 @@ pub struct SparrowConfig {
     /// Disabled if `None`.
     /// See [`jagua_rs::io::parser::Parser::new`] for more details.
     pub min_item_separation: Option<f32>,
-    /// Defines the maximum distance between two vertices of a polygon to consider it a narrow concavity (which will be closed).
+    /// Defines a maximum distance and area of a concavity to be considered "narrow" (which will be closed).
     /// Disabled if `None`.
     /// See [`jagua_rs::io::parser::Parser::new`] for more details.
-    pub narrow_concavity_cutoff_ratio: Option<f32>,
+    pub narrow_concavity_cutoff_ratio: Option<(f32, f32)>,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -98,6 +98,6 @@ pub const DEFAULT_SPARROW_CONFIG: SparrowConfig = SparrowConfig {
         },
     },
     poly_simpl_tolerance: Some(0.001),
-    narrow_concavity_cutoff_ratio: Some(0.01),
+    narrow_concavity_cutoff_ratio: Some((0.01, 0.01)),
     min_item_separation: None,
 };
